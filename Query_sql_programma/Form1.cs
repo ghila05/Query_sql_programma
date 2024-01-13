@@ -28,6 +28,7 @@ namespace Query_sql_programma
         {
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             tabControl1.SelectedIndex = 2;
         }
         private void tabPage1_Click(object sender, EventArgs e)
@@ -43,6 +44,7 @@ namespace Query_sql_programma
             {
                 dataGridView1.DataSource = Query("SELECT nome, Fornitori, Prezzo FROM oggetti;");
                 dataGridView2.DataSource = Query("select * from scaffali;");
+                dataGridView3.DataSource = Query("SELECT nome, altezza, larghezza, peso, rif_scaffale, Fornitori, Prezzo, categoria FROM oggetti JOIN scaffali ON rif_scaffale = scaffali.id;");
             }
             catch
             {
@@ -73,18 +75,18 @@ namespace Query_sql_programma
             {
                 case 0: // Ordina in modo crescente l'id
                     dataGridView2.DataSource = Query("SELECT * FROM scaffali ORDER BY scaffali.id ASC");
-                break;
+                    break;
                 case 1: // Ordina in modo decrescente l'id 
 
                     dataGridView2.DataSource = Query("SELECT * FROM scaffali ORDER BY scaffali.id DESC");
-                break; // Ordina categorie in modo Alfabetico
-                case 2:
+                    break; 
+                case 2: // Ordina categorie in modo Alfabetico
                     dataGridView2.DataSource = Query("SELECT * FROM scaffali ORDER BY scaffali.categoria ASC");
-                break;
+                    break;
 
                 case 3: // Ordina cateforie secondo l'inserimento nel database
                     dataGridView2.DataSource = Query("select * from scaffali;");
-                break;
+                    break;
             }
         }
 
@@ -112,6 +114,20 @@ namespace Query_sql_programma
 
 
         }
+        public static string[] QueryToStringArray(DataTable dt) //da query ad array di stringhe
+        {
+            string[] str = new string[dt.Rows.Count];
+            int indice = 0;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                str[indice] = string.Join(" ", row.ItemArray);
+                indice++;
+            }
+
+            return str;
+            
+        }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -126,15 +142,26 @@ namespace Query_sql_programma
             {
                 case 0: // prezzo crescente
                     dataGridView1.DataSource = Query("SELECT nome, Fornitori, Prezzo FROM oggetti ORDER BY Prezzo ASC;");
-                break;
+                    break;
 
                 case 1:
                     dataGridView1.DataSource = Query("SELECT nome, Fornitori, Prezzo FROM oggetti ORDER BY Prezzo DESC;");
-                break;
+                    break;
 
+                case 2:
+                    comboBox3_oggetti_fornitori.Visible = true;
+                    comboBox3_oggetti_fornitori.Items.Clear();
+                    comboBox3_oggetti_fornitori.Items.AddRange(QueryToStringArray(Query("SELECT Fornitori FROM oggetti;")).Distinct().ToArray());
+                    break;
 
 
             }
+        }
+
+        private void comboBox3_oggetti_fornitori_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = comboBox3_oggetti_fornitori.SelectedItem.ToString();
+            dataGridView1.DataSource = Query($"SELECT nome, Fornitori, Prezzo FROM oggetti WHERE Fornitori = \"{selected}\";");
         }
     }
 }
