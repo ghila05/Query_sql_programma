@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
+using Org.BouncyCastle.Asn1.X509;
 
 namespace Query_sql_programma
 {
@@ -39,30 +40,10 @@ namespace Query_sql_programma
 
             try
             {
-                String ConnectionString = "server=127.0.0.1;uid=Nicola;pwd=12345;database=magazzino";
-                MySqlConnection conn = new MySqlConnection(ConnectionString);
-                conn.Open();
-
-                String sql1 = "select * from oggetti;";
-                MySqlCommand cmd1 = new MySqlCommand(sql1, conn);
-                cmd1.ExecuteNonQuery();
-                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                MyAdapter.SelectCommand = cmd1;
-                DataTable dati = new DataTable();
-                MyAdapter.Fill(dati);
-
-                String sql2 = "select * from scaffali;";
-                cmd1 = new MySqlCommand(sql2, conn);
-                cmd1.ExecuteNonQuery();
-                MyAdapter = new MySqlDataAdapter();
-                MyAdapter.SelectCommand = cmd1;
-                DataTable dati2 = new DataTable();
-                MyAdapter.Fill(dati2);
-
-                dataGridView1.DataSource = dati;
-                dataGridView2.DataSource = dati2;
-                conn.Close();
-            }catch
+                dataGridView1.DataSource = Query("select * from oggetti;");
+                dataGridView2.DataSource = Query("select * from scaffali;");
+            }
+            catch
             {
                 throw new Exception("Connessione persa");
             }
@@ -79,43 +60,6 @@ namespace Query_sql_programma
 
         private void button1_Click(object sender, EventArgs e) // applica filtri scaffali
         {
-            string filtri = comboBox1.SelectedItem.ToString();
-            if(filtri == "id")
-            {
-                string ordine  = comboBox_id_scaff.SelectedItem.ToString();
-                if (ordine == "crescente")
-                {
-                    String ConnectionString = "server=127.0.0.1;uid=Nicola;pwd=12345;database=magazzino";
-                    MySqlConnection conn = new MySqlConnection(ConnectionString);
-                    conn.Open();
-
-                    String sql1 = "SELECT * FROM scaffali ORDER BY scaffali.id ASC";
-                    MySqlCommand cmd1 = new MySqlCommand(sql1, conn);
-                    cmd1.ExecuteNonQuery();
-                    MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                    MyAdapter.SelectCommand = cmd1;
-                    DataTable dati = new DataTable();
-                    MyAdapter.Fill(dati);
-                    dataGridView2.DataSource = dati;
-                }
-                else if (ordine == "decrescente")
-                {
-                    String ConnectionString = "server=127.0.0.1;uid=Nicola;pwd=12345;database=magazzino";
-                    MySqlConnection conn = new MySqlConnection(ConnectionString);
-                    conn.Open();
-
-                    String sql1 = "SELECT * FROM scaffali ORDER BY scaffali.id DESC";
-                    MySqlCommand cmd1 = new MySqlCommand(sql1, conn);
-                    cmd1.ExecuteNonQuery();
-                    MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
-                    MyAdapter.SelectCommand = cmd1;
-                    DataTable dati = new DataTable();
-                    MyAdapter.Fill(dati);
-                    dataGridView2.DataSource = dati;
-                }
-                else throw new Exception("seleziona filtri");
-            }
-
 
         }
 
@@ -126,22 +70,42 @@ namespace Query_sql_programma
 
             switch(comboBox1.SelectedIndex)
             {
-                case 0:
-                    if(selected == "id")
-                    {
-                        comboBox_id_scaff.Visible = true;
-                    }
-                    break;
-                case 1:
-                    if(selected == "categoria")
-                    {
+                case 0: // Ordina in modo crescente l'id
 
-                    }
-                    break;
+                    dataGridView2.DataSource = Query("SELECT * FROM scaffali ORDER BY scaffali.id ASC");
+                break;
+                case 1: // Ordina in modo decrescente l'id 
 
+                    dataGridView2.DataSource = Query("SELECT * FROM scaffali ORDER BY scaffali.id DESC");
+                break; // Ordina categorie in modo Alfabetico
+                case 2:
+                    dataGridView2.DataSource = Query("SELECT * FROM scaffali ORDER BY scaffali.categoria ASC");
+                break;
+
+                case 3:
+                    dataGridView2.DataSource = Query("select * from scaffali;");
+                break;
             }
         }
 
+        private DataTable Query(string query)
+        {
+            String ConnectionString = "server=127.0.0.1;uid=Nicola;pwd=12345;database=magazzino";
+            MySqlConnection conn = new MySqlConnection(ConnectionString);
+            conn.Open();
+
+            String sql1 = query;
+            MySqlCommand cmd1 = new MySqlCommand(sql1, conn);
+            cmd1.ExecuteNonQuery();
+            MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+            MyAdapter.SelectCommand = cmd1;
+            DataTable dati = new DataTable();
+            MyAdapter.Fill(dati);
+
+            conn.Close();
+
+            return dati;
+        }
 
     }
 }

@@ -31,7 +31,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Oggetti = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Magazzino = new System.Windows.Forms.TabPage();
@@ -39,7 +38,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.comboBox_id_scaff = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.Oggetti.SuspendLayout();
@@ -50,11 +48,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(354, 7);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 57);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(662, 453);
+            this.dataGridView1.Size = new System.Drawing.Size(1008, 403);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -72,7 +70,6 @@
             // 
             // Oggetti
             // 
-            this.Oggetti.Controls.Add(this.button2);
             this.Oggetti.Controls.Add(this.comboBox2);
             this.Oggetti.Controls.Add(this.label2);
             this.Oggetti.Controls.Add(this.dataGridView1);
@@ -87,19 +84,10 @@
             this.Oggetti.UseVisualStyleBackColor = true;
             this.Oggetti.Click += new System.EventHandler(this.tabPage1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 429);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 31);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "applica filtri ";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(111, 11);
+            this.comboBox2.Location = new System.Drawing.Point(872, 19);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 5;
@@ -108,7 +96,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 7);
+            this.label2.Location = new System.Drawing.Point(768, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 25);
             this.label2.TabIndex = 4;
@@ -116,7 +104,6 @@
             // 
             // Magazzino
             // 
-            this.Magazzino.Controls.Add(this.comboBox_id_scaff);
             this.Magazzino.Controls.Add(this.button1);
             this.Magazzino.Controls.Add(this.comboBox1);
             this.Magazzino.Controls.Add(this.label1);
@@ -145,11 +132,13 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "id",
-            "categoria"});
+            "Id: Crescente ",
+            "Id: Decrescente ",
+            "Categoria: Ordine alfabetico ",
+            "Categoria: Ordine inserimento"});
             this.comboBox1.Location = new System.Drawing.Point(111, 11);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.Size = new System.Drawing.Size(235, 24);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -172,18 +161,6 @@
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(663, 453);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // comboBox_id_scaff
-            // 
-            this.comboBox_id_scaff.FormattingEnabled = true;
-            this.comboBox_id_scaff.Items.AddRange(new object[] {
-            "crescente",
-            "decrescente"});
-            this.comboBox_id_scaff.Location = new System.Drawing.Point(111, 72);
-            this.comboBox_id_scaff.Name = "comboBox_id_scaff";
-            this.comboBox_id_scaff.Size = new System.Drawing.Size(121, 24);
-            this.comboBox_id_scaff.TabIndex = 4;
-            this.comboBox_id_scaff.Visible = false;
             // 
             // Database_film
             // 
@@ -216,10 +193,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox_id_scaff;
     }
 }
 
