@@ -50,10 +50,6 @@ namespace Query_sql_programma
             {
                 throw new Exception("Connessione persa");
             }
-
-
-
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -61,10 +57,7 @@ namespace Query_sql_programma
 
         }
 
-        private void button1_Click(object sender, EventArgs e) // applica filtri scaffali
-        {
 
-        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)// scaffali 
         {
@@ -89,7 +82,6 @@ namespace Query_sql_programma
                     break;
             }
         }
-
         private DataTable Query(string query)
         {
             try
@@ -111,14 +103,11 @@ namespace Query_sql_programma
                 return dati;
             }
             catch { throw new Exception("Connessione persa"); }
-
-
         }
         public static string[] QueryToStringArray(DataTable dt) //da query ad array di stringhe
         {
             string[] str = new string[dt.Rows.Count];
             int indice = 0;
-
             foreach (DataRow row in dt.Rows)
             {
                 str[indice] = string.Join(" ", row.ItemArray);
@@ -126,10 +115,9 @@ namespace Query_sql_programma
             }
 
             return str;
-            
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e) // double click per vedere più info
         {
             dataGridView1.DataSource = Query("SELECT * FROM oggetti;");
         }
@@ -144,21 +132,18 @@ namespace Query_sql_programma
                     dataGridView1.DataSource = Query("SELECT nome, Fornitori, Prezzo FROM oggetti ORDER BY Prezzo ASC;");
                     break;
 
-                case 1:
+                case 1: // prezzo decrescente
                     dataGridView1.DataSource = Query("SELECT nome, Fornitori, Prezzo FROM oggetti ORDER BY Prezzo DESC;");
                     break;
 
-                case 2:
+                case 2: // riempi combobox fornitori
                     comboBox3_oggetti_fornitori.Visible = true;
                     comboBox3_oggetti_fornitori.Items.Clear();
                     comboBox3_oggetti_fornitori.Items.AddRange(QueryToStringArray(Query("SELECT Fornitori FROM oggetti;")).Distinct().ToArray());
                     break;
-
-
             }
         }
-
-        private void comboBox3_oggetti_fornitori_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox3_oggetti_fornitori_SelectedIndexChanged(object sender, EventArgs e) //filtra secondo il fornitore scelto
         {
             string selected = comboBox3_oggetti_fornitori.SelectedItem.ToString();
             dataGridView1.DataSource = Query($"SELECT nome, Fornitori, Prezzo FROM oggetti WHERE Fornitori = \"{selected}\";");
