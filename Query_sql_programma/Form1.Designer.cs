@@ -31,6 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Oggetti = new System.Windows.Forms.TabPage();
+            this.comboBox3_oggetti_fornitori = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Magazzino = new System.Windows.Forms.TabPage();
@@ -39,7 +40,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.comboBox3_oggetti_fornitori = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.Oggetti.SuspendLayout();
@@ -56,7 +56,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1008, 403);
+            this.dataGridView1.Size = new System.Drawing.Size(1142, 472);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -70,7 +70,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1035, 500);
+            this.tabControl1.Size = new System.Drawing.Size(1166, 566);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -85,11 +85,21 @@
             this.Oggetti.Margin = new System.Windows.Forms.Padding(4);
             this.Oggetti.Name = "Oggetti";
             this.Oggetti.Padding = new System.Windows.Forms.Padding(4);
-            this.Oggetti.Size = new System.Drawing.Size(1027, 471);
+            this.Oggetti.Size = new System.Drawing.Size(1158, 537);
             this.Oggetti.TabIndex = 0;
             this.Oggetti.Text = "Oggetti";
             this.Oggetti.UseVisualStyleBackColor = true;
             this.Oggetti.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // comboBox3_oggetti_fornitori
+            // 
+            this.comboBox3_oggetti_fornitori.FormattingEnabled = true;
+            this.comboBox3_oggetti_fornitori.Location = new System.Drawing.Point(999, 7);
+            this.comboBox3_oggetti_fornitori.Name = "comboBox3_oggetti_fornitori";
+            this.comboBox3_oggetti_fornitori.Size = new System.Drawing.Size(121, 24);
+            this.comboBox3_oggetti_fornitori.TabIndex = 6;
+            this.comboBox3_oggetti_fornitori.Visible = false;
+            this.comboBox3_oggetti_fornitori.SelectedIndexChanged += new System.EventHandler(this.comboBox3_oggetti_fornitori_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -124,7 +134,7 @@
             this.Magazzino.Margin = new System.Windows.Forms.Padding(4);
             this.Magazzino.Name = "Magazzino";
             this.Magazzino.Padding = new System.Windows.Forms.Padding(4);
-            this.Magazzino.Size = new System.Drawing.Size(1027, 471);
+            this.Magazzino.Size = new System.Drawing.Size(1158, 537);
             this.Magazzino.TabIndex = 1;
             this.Magazzino.Text = "Scaffali";
             this.Magazzino.UseVisualStyleBackColor = true;
@@ -160,7 +170,7 @@
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(663, 453);
+            this.dataGridView2.Size = new System.Drawing.Size(797, 522);
             this.dataGridView2.TabIndex = 0;
             // 
             // tabPage1
@@ -169,7 +179,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1027, 471);
+            this.tabPage1.Size = new System.Drawing.Size(1158, 537);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Visualizzazione";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -177,28 +187,19 @@
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(6, 72);
+            this.dataGridView3.Location = new System.Drawing.Point(11, 68);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(1015, 393);
+            this.dataGridView3.Size = new System.Drawing.Size(1141, 463);
             this.dataGridView3.TabIndex = 0;
-            // 
-            // comboBox3_oggetti_fornitori
-            // 
-            this.comboBox3_oggetti_fornitori.FormattingEnabled = true;
-            this.comboBox3_oggetti_fornitori.Location = new System.Drawing.Point(872, 31);
-            this.comboBox3_oggetti_fornitori.Name = "comboBox3_oggetti_fornitori";
-            this.comboBox3_oggetti_fornitori.Size = new System.Drawing.Size(121, 24);
-            this.comboBox3_oggetti_fornitori.TabIndex = 6;
-            this.comboBox3_oggetti_fornitori.Visible = false;
-            this.comboBox3_oggetti_fornitori.SelectedIndexChanged += new System.EventHandler(this.comboBox3_oggetti_fornitori_SelectedIndexChanged);
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
             // Database_film
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1244, 617);
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Database_film";

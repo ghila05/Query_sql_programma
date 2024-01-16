@@ -39,7 +39,6 @@ namespace Query_sql_programma
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // connessione 
-
             try
             {
                 dataGridView1.DataSource = Query("SELECT nome, Fornitori, Prezzo FROM oggetti;");
@@ -147,6 +146,11 @@ namespace Query_sql_programma
         {
             string selected = comboBox3_oggetti_fornitori.SelectedItem.ToString();
             dataGridView1.DataSource = Query($"SELECT nome, Fornitori, Prezzo FROM oggetti WHERE Fornitori = \"{selected}\";");
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
