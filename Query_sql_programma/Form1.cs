@@ -143,6 +143,13 @@ namespace Query_sql_programma
                     comboBox3_oggetti_fornitori.Items.Clear();
                     comboBox3_oggetti_fornitori.Items.AddRange(QueryToStringArray(Query("SELECT Fornitori FROM oggetti;")).Distinct().ToArray());
                     break;
+
+                case 3:
+
+                    textBox1.Visible = true;
+                    label3.Visible = true;
+                    break;
+
             }
         }
         private void comboBox3_oggetti_fornitori_SelectedIndexChanged(object sender, EventArgs e) //filtra secondo il fornitore scelto
@@ -154,6 +161,17 @@ namespace Query_sql_programma
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string inizio = textBox1.Text;
+            dataGridView1.DataSource = Query($"SELECT * FROM oggetti WHERE oggetti.nome LIKE '{inizio}%';");
         }
     }
 }
