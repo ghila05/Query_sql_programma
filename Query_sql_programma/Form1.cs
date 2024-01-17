@@ -27,8 +27,11 @@ namespace Query_sql_programma
         private void Form1_Load(object sender, EventArgs e)
         {
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.ReadOnly = true;
             dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.ReadOnly = true;
             dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView3.ReadOnly = true;
             tabControl1.SelectedIndex = 2;
         }
         private void tabPage1_Click(object sender, EventArgs e)
